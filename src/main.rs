@@ -1,14 +1,9 @@
-use cpa::parser_args;
+use cpa;
 use std::env;
 
 fn main() {
-    let mut args = Vec::new();
-
-    for arg in env::args() {
-        args.push(arg);
-    }
-
-    if let Err(e) = parser_args(args) {
-        eprintln!("Application Error: {}", e)
+    // env::args() 返回一个遍历器,作为参数传入cp_a_dir_file
+    if let Err(e) = cpa::cp_a_dir_file(env::args()) {
+        eprintln!(">>>>> {}", e)
     }
 }
